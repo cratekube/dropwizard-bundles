@@ -1,0 +1,10 @@
+*
+!.git
+!ci
+!gradle
+!subprojects
+!build.gradle
+!codenarc.groovy
+!gradle.properties
+!gradlew
+!settings.gradle
