@@ -1,0 +1,24 @@
+language: bash
+
+services:
+- docker
+
+script: "./ci/docker_build.sh"
+
+deploy:
+- provider: script
+  skip_cleanup: true
+  script: "./ci/publish_latest.sh"
+  on:
+    tags: false
+    branch: master
+- provider: script
+  skip_cleanup: true
+  script: "./ci/publish_tag.sh"
+  on:
+    tags: true
+
+env:
+  global:
+  - secure: Rvxt5lhvokgvON26l74TDuQbgQ6I73h0dhAjt4u9SRcFmKYKLM9Sgj+2OWtD9XEj1CfWZaTf0lA57C91fjkPhCklAfN0IjwE2t5cr0YEGSKMgYOGZ8xyyNRPwydwyYpKc/9GYklIeaoAm5EwXYd9RvJ1C8/g6+o18ZKVZyyiEjUfEpeUAyn1Qdfue5ZAi2l/V9BGIv4LqgnwjjTPlaSNEI6smQ63ejiCvFRUeLLgXG1VGGcuv+pOiDm7zdat1FxAjjSaY002xjC5xGDfo73ArD0zvSRm3Gef0ex6HDfKhaw7J9Yv3lgeUBKaa+s6nCOu2naGc99fFjLGnPgAFOHxC+Ba3IU9c3cTI/0tRfBL8N4WVNGxsym/fFTjpAk7awLAA1e2/EWcA4XWtBvhn5VT+wsKu+OSY3kCvAhCsZDQZdkd+y26n00K/bzPyKPrFq0NcynXWv5ccrmoiFyz++OPcgK1DvQ5VvYRyuDVp8+y3CSpBHSzO7Id/AZNpUeYcv+oFqstQbBylNKi4Sl8bZEDmkap9vIwI3TZG330rDILO32xOE/Iy7uUK6419YYkx7LOXM/C9byEsZ1yRuwZWdqGyUUqEnVNwWQ4whL0CBgOzS6QBXUG+9yp9IdVa23Nql6trFTTlTa+TtUpHWUWS6mBoTRIOxZdtX3IMFafforMqUI=
+  - secure: kqynZDxnxoAGsTV2eNvUH6Pxt0VKUJwD4kfTysBY79iksKYgw4DPBjuaEoPKlrcriL44JSR0wsamawNZEkKpJI1L9M9Lkcg2YfVtX8hhOgVlcg7AgpI711NfNkikzPpoDOaK2HExO3+233cgnbFI3D1GtBxIlQYTYJyYTaS0TV+ZQQelOd2yJacoJF8wNXNfv4ay8XbsvpTvgaKWL7nKuSx1JVt5FT3dri8vSZvVoDwjonP1EGpdZfVTK5xv2sWB4HY70UNBSK1NSgyENUH+YIIG2iPqBSsDPqoAnMP5ZKj093O3Ewc5yaYUcJQqBVnQfji2WXWehcLi7cxvqxjDdoHDum2w5Pp789NWwhsQSHeZC81WffmCWf1bdjjl/16hB3dkZCpmZuEklnYgqaUD449zWWJGV+vY9yyC5xAeF5l+uTlbIYMbccoqBRp4NGC83xKqxPCWwGpzdJLjAXS3PJQwsYyK4pylRvQX4Zzu6jveAHzN5fDgTG+JI0UqwTNxnI2DMNEpaaLx33f67skMV6ulF+DsxX+s1CyY3z0uIojCg5pVLnPto8RlawNZPRqry+Wcj/18LeEe+O+sf7v85QZfKyZoz96hSIFYXkT4n9O8KCcNRXid/+SBgxkfRi70CqqMmTHm8BA3h7ioQ+0i7lyAe2mWb8+wnmgKZ6iLEaY=
